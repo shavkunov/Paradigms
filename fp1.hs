@@ -3,15 +3,13 @@ head' (x : _) =  x
 
 tail' :: [a] -> [a]
 tail' [] = []
-tail' (_ : x) =  x
+tail' (_ : xs) =  xs
 
 take' :: Int -> [a] -> [a]
 take' n [] = []
-take' n (x : xs) = if n > 0
+take' n (x : xs) = if n > 1
 				   then (x : (take' (n - 1) xs))
-				   else (if n == 0
-						then []
-						else [x])
+				   else [x]
 
 drop' :: Int -> [a] -> [a]
 drop' n [] = []
@@ -20,7 +18,7 @@ drop' n (x : xs) = if n > 1
 				   else xs
 
 filter' :: (a -> Bool) -> [a] -> [a]
-filter' f xs = [x | x <- xs, f x == True]
+filter' f xs = [x | x <- xs, f x]
 
 foldl' :: (a -> b -> a) -> a -> [b] -> a
 foldl' f z [] = z
